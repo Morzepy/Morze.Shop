@@ -1,0 +1,32 @@
+﻿<Window x:Class="Morze.Shop.GUI_WPF_Application.Shop"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Morze.Shop.GUI_WPF_Application"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Shop" MinWidth="960" MinHeight="540" Width="1280" Height="720">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0 30 0 0">
+            <Button Content="Обновить" Margin="0 0 0 15" />
+            <Button Content="Удалить" Margin="0 0 0 15" />
+            <TextBox materialDesign:HintAssist.Hint="Поиск" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 15"/>
+            <Button Content="Найти" Margin="0 0 0 15"/>
+            <Label Content="Выберите таблицу" Margin="0 0 0 15"/>
+            <ComboBox materialDesign:HintAssist.Hint="Список">
+                <TextBlock>Клиенты</TextBlock>
+                <TextBlock>Товары</TextBlock>
+            </ComboBox>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <DataGrid Name="BD_List"/>
+            <Button HorizontalAlignment="Right" Content="Создать товар"  Click="Button_Click_Product_creation" Margin="0 0 250 -600" Cursor="Hand"/>
+            <Button HorizontalAlignment="Right" Content="Выйти из приложения" Click="Button_Exit" Margin="0 0 30 -600" Style="{StaticResource MaterialDesignFlatButton}"/>
+        </Grid>
+    </Grid>
+</Window>

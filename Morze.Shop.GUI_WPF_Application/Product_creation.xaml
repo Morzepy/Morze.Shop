@@ -1,0 +1,31 @@
+﻿<Window x:Class="Morze.Shop.GUI_WPF_Application.Product_creation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="Morze.Shop.GUI_WPF_Application.Product_creation"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Product_creation"  MinWidth="300" MinHeight="500" Width="400" Height="500" >
+    <Grid Background="#ffdadada">
+        <Border MinWidth="300" Margin="9" Background="White" VerticalAlignment="Center" Padding="30"
+                MaxHeight="500" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Создание товара" FontSize="15" FontWeight="Bold" HorizontalAlignment ="Center" Margin="0 0 0 20"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите код товара"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите код продажи"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите название товара"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите цену товара"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите единицу измерения товара"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите количества товара"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <Grid Margin="0 20 0 0">
+                    <Button Content="Создать" Cursor="Hand"/>
+                </Grid>
+                <Button  Content="Выйти" Click="Button_Click_OutToShop" Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
