@@ -12,20 +12,23 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Margin="0 30 0 0">
+        <StackPanel Margin="5 30 5 0">
             <Button Content="Обновить" Margin="0 0 0 15" />
+            <Button Content="Сохранить" Margin="0 0 0 15" />
             <Button Content="Удалить" Margin="0 0 0 15" />
-            <TextBox materialDesign:HintAssist.Hint="Поиск" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 15"/>
+            <TextBox materialDesign:HintAssist.Hint="Поиск" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 35 15"/>
+            <materialDesign:PackIcon Kind="Magnify" Width="30" Height="30" Margin="205 -45 0 0"/>
             <Button Content="Найти" Margin="0 0 0 15"/>
-            <Label Content="Выберите таблицу" Margin="0 0 0 15"/>
-            <ComboBox materialDesign:HintAssist.Hint="Список">
+            <Label Content="Выберите таблицу" FontSize="16" Margin="0 0 0 15"/>
+            <materialDesign:PackIcon Kind="DatabaseImport" Width="30" Height="30" Margin="205 -45 0 0"/>
+            <ComboBox materialDesign:HintAssist.Hint="Список" FontSize="16">
                 <TextBlock>Клиенты</TextBlock>
                 <TextBlock>Товары</TextBlock>
             </ComboBox>
         </StackPanel>
         <Grid Grid.Column="1">
-            <DataGrid Name="BD_List"/>
-            <Button HorizontalAlignment="Right" Content="Создать товар"  Click="Button_Click_Product_creation" Margin="0 0 250 -600" Cursor="Hand"/>
+            <DataGrid Name="BD_List" Margin="0 0 0 100" FontSize="16"/>
+            <Button HorizontalAlignment="Right" Content="Создать товар" Click="Button_Click_Product_creation" Margin="0 0 250 -600" Cursor="Hand"/>
             <Button HorizontalAlignment="Right" Content="Выйти из приложения" Click="Button_Exit" Margin="0 0 30 -600" Style="{StaticResource MaterialDesignFlatButton}"/>
         </Grid>
     </Grid>

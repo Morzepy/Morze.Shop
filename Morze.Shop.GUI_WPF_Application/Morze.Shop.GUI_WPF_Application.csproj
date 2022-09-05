@@ -10,4 +10,8 @@
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Morze.Shop.Db_context\Morze.Shop.Db_context.csproj" />
+  </ItemGroup>
+
 </Project>

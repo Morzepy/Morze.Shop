@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Morze.Shop.GUI_WPF_Application"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Registration"  MinWidth="300" MinHeight="420" Width="400" Height="420" >
+        Title="Registration"  MinWidth="420" MinHeight="470" Width="420" Height="470" >
     <Grid Background="#ffdadada">
         <Border MinWidth="300" Margin="9" Background="White" VerticalAlignment="Center" Padding="30"
                 MaxHeight="500" CornerRadius="20">
@@ -14,14 +14,19 @@
                 <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
             </Border.Effect>
             <StackPanel>
-                <TextBlock Text="Регистрация" FontSize="15" FontWeight="Bold" HorizontalAlignment ="Center" Margin="0 0 0 20"/>
-                <TextBox materialDesign:HintAssist.Hint="Введите Имя"          Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <TextBox materialDesign:HintAssist.Hint="Введите Фамилию"      Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <TextBox materialDesign:HintAssist.Hint="Введите логин"        Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <PasswordBox materialDesign:HintAssist.Hint="Введите пароль"   Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
-                <PasswordBox materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <TextBlock Text="Регистрация" FontSize="20" FontWeight="Bold" HorizontalAlignment ="Center" Margin="0 0 0 10"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите Имя" x:Name="textBox_FirstName" FontSize="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 30 0"/>
+                <materialDesign:PackIcon Kind="BadgeAccountHorizontal" Width="25" Height="25" Margin="300 -25 0 0"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите Фамилию" x:Name="textBox_LastName" FontSize="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 30 0"/>
+                <materialDesign:PackIcon Kind="BadgeAccountHorizontalOutline" Width="25" Height="25" Margin="300 -25 0 0"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите логин" x:Name="textBox_login" FontSize="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 30 0"/>
+                <materialDesign:PackIcon Kind="Login" Width="30" Height="30" Margin="295 -30 0 0"/>
+                <PasswordBox materialDesign:HintAssist.Hint="Введите пароль" x:Name="textBox_password" FontSize="15" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 0 30 0"/>
+                <materialDesign:PackIcon Kind="Lock" Width="30" Height="30" Margin="295 -30 0 0"/>
+                <PasswordBox materialDesign:HintAssist.Hint="Повторите пароль" x:Name="textBox_password2" FontSize="15" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 0 30 0"/>
+                <materialDesign:PackIcon Kind="LockCheck" Width="30" Height="30" Margin="295 -30 0 0"/>
                 <Grid Margin="0 20 0 0">
-                    <Button Content="Зарегистрироваться" />
+                    <Button Content="Зарегистрироваться" Click="Button_Click_Sign_Up" Cursor="Hand" />
                 </Grid>
                 <Button HorizontalAlignment="Center" Content="Войти" Click="Button_Click_MainWindow" Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand"/>
             </StackPanel>

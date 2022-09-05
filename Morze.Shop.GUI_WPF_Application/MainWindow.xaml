@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Morze.Shop.GUI_WPF_Application"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Authentication"  MinWidth="400" MinHeight="280" Width="400" Height="280" >
+        Title="Authentication"  MinWidth="410" MinHeight="300" Width="410" Height="300" >
     <Grid Background="#ffdadada">
         <Border MinWidth="300" Margin="9" Background="White" VerticalAlignment="Center" Padding="30"
                 MaxHeight="300" CornerRadius="20">
@@ -14,9 +14,11 @@
                 <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
             </Border.Effect>
             <StackPanel>
-                <TextBlock Text="Вход в приложение" FontSize="15" FontWeight="Bold" Margin="0 0 0 20"/>
-                <TextBox materialDesign:HintAssist.Hint="Введите логин"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <PasswordBox materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <TextBlock Text="Вход в приложение"  FontSize="20" FontWeight="Bold" Margin="0 0 0 10"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите логин" x:Name="textBox_login" FontSize="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 30 0"/>
+                <materialDesign:PackIcon Kind="Account" Width="30" Height="35" Margin="290 -30 0 0"/>
+                <PasswordBox materialDesign:HintAssist.Hint="Введите пароль" x:Name="textBox_password" FontSize="15" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 0 30 0"/>
+                <materialDesign:PackIcon Kind="Password" Width="30" Height="25" Margin="290 -25 0 0"/>
                 <Grid Margin="0 20 0 0">
                     <Button HorizontalAlignment="Left" Content="Войти" Click="Button_Click_Entry" />
                     <Button HorizontalAlignment="Right" Content="Регистрация" Click="Button_Click_Registration" Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand"/>

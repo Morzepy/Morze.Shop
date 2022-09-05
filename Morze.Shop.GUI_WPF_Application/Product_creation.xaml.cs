@@ -21,6 +21,8 @@ namespace Morze.Shop.GUI_WPF_Application
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            textBox_productName.MaxLength = Settings.lengthNchar;
         }
         private void Button_Click_OutToShop(object sender, RoutedEventArgs e)
         {
