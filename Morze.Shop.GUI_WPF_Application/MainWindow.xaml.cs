@@ -25,7 +25,7 @@ namespace Morze.Shop.GUI_WPF_Application
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             textBox_login.MaxLength = Settings.lengthNchar;
-            textBox_password.MaxLength = Settings.lengthNchar;
+            passwordBox.MaxLength = Settings.lengthNchar;
         }
         private void Button_Click_Entry(object sender, RoutedEventArgs e)
         {

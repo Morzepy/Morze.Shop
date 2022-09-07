@@ -26,27 +26,54 @@ namespace Morze.Shop.GUI_WPF_Application
             textBox_FirstName.MaxLength = Settings.lengthNchar;
             textBox_LastName.MaxLength = Settings.lengthNchar;
             textBox_login.MaxLength = Settings.lengthNchar;
-            textBox_password.MaxLength = Settings.lengthNchar;
-            textBox_password2.MaxLength = Settings.lengthNchar;
+            passwordBox.MaxLength = Settings.lengthNchar;
+            passwordBox2.MaxLength = Settings.lengthNchar;
         }
 
         private void Button_Click_Sign_Up(object sender, RoutedEventArgs e)
         {
-            using (var context = new MyDbContext())
+
+
+            if ((textBox_FirstName.Text.Trim().Length > 0) && (textBox_LastName.Text.Trim().Length > 0) &&
+                 (textBox_login.Text.Trim().Length > 0) && (passwordBox.Password.Trim().Length > 0) &&
+                 (passwordBox2.Password.Trim().Length > 0))
             {
-                var client = new Client()
+                try
                 {
-                   ClientFirstName = "f",
-                   ClientLastName = "f",
-                   ClientLogin = "f",
-                   ClientPassword = "f",
-                };
-                context.Clients.Add(client);
-                context.SaveChanges();
+                    using (var context = new MyDbContext())
+                    {
+                        var client = new Client()
+                        {
+                            ClientFirstName = textBox_FirstName.Text,
+                            ClientLastName = textBox_LastName.Text,
+                            ClientLogin = textBox_login.Text,
+                            ClientPassword = passwordBox.Password
+                        };
+                        context.Clients.Add(client);
+                        context.SaveChanges();
+                        MessageBox.Show("Пользователь был зарегистрирован", "Проверка регестрации",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
-            MessageBox.Show("Пользователь был зарегистрирован", "Проверка регестрации", MessageBoxButton.OK , MessageBoxImage.Information);
-            this.Close();
-        }
+            else
+            {
+                MessageBox.Show("Вы забыли заполнить поле ввода !", "Validation error",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                textBox_FirstName.Text = "";
+                textBox_LastName.Text = "";
+                textBox_login.Text = "";
+                passwordBox.Password = "";
+                passwordBox2.Password = "";
+            }
+                
+        } 
         private void Button_Click_MainWindow(object sender, RoutedEventArgs e)
         {
             this.Close();
