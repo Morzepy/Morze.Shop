@@ -1,7 +1,8 @@
 C#, WPF, MSSQL, Entity Framework.
 Приложение (Shop) для работы с базой данной, есть возможность создание товара, удаление и поиска данных. Есть авторизация и регистрация клиента. В качестве стиля графического интерфейса пользователя использовался Material Design In XAML.
-
-![Окно входа](https://user-images.githubusercontent.com/86247389/189728536-882e3f6e-c0a1-4cf0-8785-f8430088677e.png)
+<p align="center">
+  ![Окно входа](https://user-images.githubusercontent.com/86247389/189728536-882e3f6e-c0a1-4cf0-8785-f8430088677e.png)
+</p>
 
 При заходе в приложение пользователь может зарегистрироваться, для этого перейдя в окно регистрации, данные запишутся в базу данных (MSSQL) Shop_Database.
 
@@ -27,15 +28,9 @@ C#, WPF, MSSQL, Entity Framework.
 Таблица "Клиенты" имеет первичный ключ ClientId;
 Таблица "Товары" имеет первичный ключ ProductID и вторичный ключ ClientId;
 Связь один ко многим.
-___________________________________________________
-Клиенты                   | Товары                 |
-__________________________|________________________|
-ClientId INT (PK)         | ProductID INT (PK)     |
-ClientFirstName NCHAR(50) | ProductName NCHAR(50)  |
-ClientLastName NCHAR(50)  | Price INT              |
-ClientLogin NCHAR(50)     | Amount INT             |
-ClientPassword NCHAR(50)  | ClientId INT (FK)      |
-__________________________|________________________|
+
+Клиенты (ClientId INT (PK), ClientFirstName NCHAR(50), ClientLastName NCHAR(50), ClientLogin NCHAR(50), ClientPassword NCHAR(50))
+Товары (ProductID INT (PK), ProductName NCHAR(50), Price INT, Amount INT, ClientId INT (FK))
 
 В случае, если пользователь не выбрал таблицы выдаётся ошибка в MessageBox.
 
