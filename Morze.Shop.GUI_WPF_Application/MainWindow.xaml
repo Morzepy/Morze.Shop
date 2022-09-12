@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:Morze.Shop.GUI_WPF_Application"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Аутентификация"  MinWidth="410" MinHeight="300" Width="410" Height="300" >
-    <Grid Background="#ffdadada">
-        <Border MinWidth="300" Margin="9" Background="White" VerticalAlignment="Center" Padding="30"
+        Title="Аутентификация" MinWidth="410" MinHeight="300" Width="410" Height="300" MaxWidth="410" MaxHeight="300" >
+    <Grid Background="#FFDADADA">
+        <Border MinWidth="300" Margin="9" Background="#FFFFFF" VerticalAlignment="Center" Padding="30"
                 MaxHeight="300" CornerRadius="20">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
@@ -19,11 +19,12 @@
                 <TextBox x:Name="textBox_login" materialDesign:HintAssist.Hint="Введите логин"
                          FontSize="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 30 0"/>
                 <materialDesign:PackIcon Kind="Account" Width="30" Height="35" Margin="290 -30 0 0"/>
-                
+
+
                 <PasswordBox x:Name="passwordBox" materialDesign:HintAssist.Hint="Введите пароль"
-                             FontSize="15" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 0 30 0"/>
+                             FontSize="15" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 0 30 0" Visibility="Visible"/>
                 <materialDesign:PackIcon Kind="KeyVariant" Width="30" Height="25" Margin="290 -25 0 0"/>
-                
+
                 <Grid Margin="0 20 0 0">
                     <Button Content="Войти" Click="Button_Click_Entry" HorizontalAlignment="Left"/>
                     <Button Content="Регистрация" Click="Button_Click_Registration" HorizontalAlignment="Right"  Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand"/>

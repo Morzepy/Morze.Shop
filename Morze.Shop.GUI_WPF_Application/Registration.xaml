@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:Morze.Shop.GUI_WPF_Application"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Регистрация"  MinWidth="420" MinHeight="470" Width="420" Height="470" >
-    <Grid Background="#ffdadada">
-        <Border MinWidth="300" Margin="9" Background="White" VerticalAlignment="Center" Padding="30"
+        Title="Регистрация"  MinWidth="420" MinHeight="470" Width="420" Height="470" MaxWidth="420" MaxHeight="470">
+    <Grid Background="#FFDADADA">
+        <Border MinWidth="300" Margin="9" Background="#FFFFFF" VerticalAlignment="Center" Padding="30"
                 MaxHeight="500" CornerRadius="20">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
@@ -17,7 +17,7 @@
             <StackPanel>
                 <TextBlock Text="Регистрация" FontSize="20" FontWeight="Bold" HorizontalAlignment ="Center" Margin="0 0 0 10"/>
                 
-                <TextBox x:Name="textBox_FirstName" materialDesign:HintAssist.Hint="Введите Имя"
+                <TextBox x:Name="textBox_FirstName"  materialDesign:HintAssist.Hint="Введите Имя"
                          FontSize="15" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 30 0"/>
                 <materialDesign:PackIcon Kind="BadgeAccountHorizontal" Width="25" Height="25" Margin="300 -25 0 0"/>
 

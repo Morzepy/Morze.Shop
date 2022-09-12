@@ -1,16 +1,10 @@
 ﻿using Morze.Shop.Db_context;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace Morze.Shop.GUI_WPF_Application
 {
@@ -22,63 +16,69 @@ namespace Morze.Shop.GUI_WPF_Application
         public Product_creation()
         {
             InitializeComponent();
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             textBox_productName.MaxLength = Settings.lengthNchar;
         }
        
-        private void Button_Click_CreatingProducttton(object sender, RoutedEventArgs e)
+        private void Button_Click_Creating(object sender, RoutedEventArgs e)
         {
-            try
+            Creating ();
+        }
+        
+        private void Button_Click_OutToShop(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите выйти из окна создания товара", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                if ( (textBox_productName.Text.Trim().Length > 0) && (textBox_price.Text.Trim().Length > 0) &&
-                     (textBox_amount.Text.Trim().Length > 0) && (textBox_clientID.Text.Trim().Length > 0) )
+                Close();
+            }
+        }
+
+        //Метод создания товара
+        private void Creating()
+        {
+            //Проверка на пустые поля, которые не заполнил пользователь
+            if ((textBox_productName.Text.Trim().Length > 0) && (textBox_price.Text.Trim().Length > 0) &&
+                (textBox_amount.Text.Trim().Length > 0) && (textBox_clientID.Text.Trim().Length > 0))
+            {
+                //Проверка ввел ли пользователь числа в нужные поля
+                if (Int32.TryParse(textBox_price.Text, out int price) && Int32.TryParse(textBox_amount.Text, out int amount) &&
+                    Int32.TryParse(textBox_clientID.Text, out int ClientID))
                 {
                     using (var context = new MyDbContext())
                     {
-                        var product = new Product()
+                        //Проверка в базе данных есть ли клиент с таким ID
+                        bool isFoundClientID = context.Clients.Any(client => client.ClientId == ClientID);
+                        if (isFoundClientID)
                         {
-                            ProductName = textBox_productName.Text,
-                            Price = Convert.ToInt32(textBox_price.Text.Trim()),
-                            Amount = Convert.ToInt32(textBox_amount.Text.Trim()),
-                            ClientId = Convert.ToInt32(textBox_clientID.Text.Trim())
-                        };
-                        context.Products.Add(product);
-                        context.SaveChanges();
+                            var product = new Product()
+                            {
+                                ProductName = textBox_productName.Text,
+                                Price = price,
+                                Amount = amount,
+                                ClientId = ClientID
+                            };
+
+                            context.Products.Add(product);
+                            context.SaveChanges();
+                            MessageBox.Show("Товар был создан и записан в базу данных", "Create",
+                                             MessageBoxButton.OK, MessageBoxImage.Information);
+                            Close();
+                        }
+                        else MessageBox.Show("Вы ввели в поле с числом другие символы", "NotIsNumber warning",
+                                             MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
-                    this.Close();
                 }
-                else 
-                { 
-                    MessageBox.Show("Вы забыли заполнить поле ввода !", "Validation error",
-                                    MessageBoxButton.OK, MessageBoxImage.Error);
-                    textBox_productName.Text = "";
-                    textBox_price.Text = "";
-                    textBox_amount.Text = "";
+                else
+                {
+                    MessageBox.Show("Данного клиента не существует, пожалуйста проверьте таблицу клиентов!", "ClientID not found",
+                                    MessageBoxButton.OK, MessageBoxImage.Warning);
                     textBox_clientID.Text = "";
                 }
-                
-                
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Отсутвует подключение к базе данных", "Connecting to the database",
-                                    MessageBoxButton.OK, MessageBoxImage.Error);
-                throw;
-            }
-            
-        }
-        private void Button_Click_OutToShop(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+            else MessageBox.Show("Вы забыли заполнить поле ввода !", "Validation warning",
+                                 MessageBoxButton.OK, MessageBoxImage.Warning);
 
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
         }
-
-
     }
 }

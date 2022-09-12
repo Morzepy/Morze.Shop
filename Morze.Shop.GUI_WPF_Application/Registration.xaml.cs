@@ -1,15 +1,6 @@
 ﻿using Morze.Shop.Db_context;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Morze.Shop.GUI_WPF_Application
 {
@@ -21,62 +12,75 @@ namespace Morze.Shop.GUI_WPF_Application
         public Registration()
         {
             InitializeComponent();
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             textBox_FirstName.MaxLength = Settings.lengthNchar;
             textBox_LastName.MaxLength = Settings.lengthNchar;
-            textBox_login.MaxLength = Settings.lengthNchar;
             passwordBox.MaxLength = Settings.lengthNchar;
             passwordBox2.MaxLength = Settings.lengthNchar;
         }
 
         private void Button_Click_Sign_Up(object sender, RoutedEventArgs e)
         {
-
-
-            if ((textBox_FirstName.Text.Trim().Length > 0) && (textBox_LastName.Text.Trim().Length > 0) &&
-                 (textBox_login.Text.Trim().Length > 0) && (passwordBox.Password.Trim().Length > 0) &&
-                 (passwordBox2.Password.Trim().Length > 0))
-            {
-                try
-                {
-                    using (var context = new MyDbContext())
-                    {
-                        var client = new Client()
-                        {
-                            ClientFirstName = textBox_FirstName.Text,
-                            ClientLastName = textBox_LastName.Text,
-                            ClientLogin = textBox_login.Text,
-                            ClientPassword = passwordBox.Password
-                        };
-                        context.Clients.Add(client);
-                        context.SaveChanges();
-                        MessageBox.Show("Пользователь был зарегистрирован", "Проверка регестрации",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.Close();
-                    }
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Вы забыли заполнить поле ввода !", "Validation error",
-                                MessageBoxButton.OK, MessageBoxImage.Error);
-                textBox_FirstName.Text = "";
-                textBox_LastName.Text = "";
-                textBox_login.Text = "";
-                passwordBox.Password = "";
-                passwordBox2.Password = "";
-            }
-                
+            Sign_Up();
         } 
         private void Button_Click_MainWindow(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
+        }
+
+        //Метод Регистрации пользователя
+        private void Sign_Up()
+        {
+            //Проверка на пустые поля, которые не заполнил пользователь
+            if ((textBox_FirstName.Text.Trim().Length > 0) && (textBox_LastName.Text.Trim().Length > 0) &&
+               (textBox_login.Text.Trim().Length > 0) && (passwordBox.Password.Trim().Length > 0) &&
+               (passwordBox2.Password.Trim().Length > 0))
+            {
+                //Проверка совпадает ли проверка пароля
+                if (passwordBox.Password == passwordBox2.Password)
+                {
+                    using (var context = new MyDbContext())
+                    {
+                        var Login = textBox_login.Text;
+                        //Проверка в базе данных если ли пользователь с таким же login
+                        bool isLoginFound = context.Clients.Any(client => client.ClientLogin == Login);
+                        if (!isLoginFound)
+                        {
+                            var client = new Client()
+                            {
+                                ClientFirstName = textBox_FirstName.Text,
+                                ClientLastName = textBox_LastName.Text,
+                                ClientLogin = textBox_login.Text,
+                                ClientPassword = passwordBox.Password
+                            };
+                            context.Clients.Add(client);
+                            context.SaveChanges();
+                            MessageBox.Show("Пользователь был зарегистрирован", "Проверка регестрации",
+                                            MessageBoxButton.OK, MessageBoxImage.Information);
+                            Close();
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Данный логин уже был зарегестрирован! Введите другой логин!", "Login warning",
+                                            MessageBoxButton.OK, MessageBoxImage.Warning);
+                            textBox_login.Text = "";
+                        }
+                    }
+                }
+
+                else
+                {
+                    MessageBox.Show("Подтверждения пароля не совпадает с паролем! Введите правильно пароль !", "Password warning",
+                                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                    passwordBox2.Password = "";
+                }
+            }
+
+            else MessageBox.Show("Вы забыли заполнить поле ввода !", "Validation warning",
+                                   MessageBoxButton.OK, MessageBoxImage.Warning);
+            
         }
     }
 }
