@@ -21,4 +21,83 @@ C#, WPF, MSSQL, Entity Framework.
 
 Логин пользователя отображается справа вверху, для дальнейшей работы нужно выбрать таблицу из списка в Combobox.
 
-![Окно приложения](https://user-images.githubusercontent.com/86247389/189731415-acbaa3bf-9cb0-4597-b53e-4cc478bb570d.png)
+![Окно приложения](https://user-images.githubusercontent.com/86247389/189731415-acbaa3bf-9cb0-4597-b53e-4cc478bb570d.png) 
+
+При нажатие на список, нам на выбор предоставляется две таблицы (Товары, Клиенты)
+Таблица "Клиенты" имеет первичный ключ ClientId;
+Таблица "Товары" имеет первичный ключ ProductID и вторичный ключ ClientId;
+Связь один ко многим.
+___________________________________________________
+Клиенты                   | Товары                 |
+__________________________|________________________|
+ClientId INT (PK)         | ProductID INT (PK)     |
+ClientFirstName NCHAR(50) | ProductName NCHAR(50)  |
+ClientLastName NCHAR(50)  | Price INT              |
+ClientLogin NCHAR(50)     | Amount INT             |
+ClientPassword NCHAR(50)  | ClientId INT (FK)      |
+__________________________|________________________|
+
+В случае, если пользователь не выбрал таблицы выдаётся ошибка в MessageBox.
+
+![Combobox](https://user-images.githubusercontent.com/86247389/189731882-e40d969c-b44f-4875-a7c3-1ca15f58a254.png)
+
+После выбора таблице в Combobox (Клиенты) нужно нажать кнопку обновить, DataGrid выведется информация из базы данных.
+
+![Обновить](https://user-images.githubusercontent.com/86247389/189733592-3332ee8f-7c8d-4ecf-bd47-a09fa5767be1.png)
+
+В элементе DataGrid выводится информация ID Клиента, Имя, Фамилия. Пароль и логин хранится в базе данных, но не выводится для безопасности системы.
+
+![Таблица Клиенты](https://user-images.githubusercontent.com/86247389/189733848-aae41bac-9c10-4214-8d23-b48e4a1f4d25.png)
+
+При изменении в Combobox (Товары) нужно нажать кнопку обновить, DataGrid выведется информация из базы данных. В элементе DataGrid выводится информация ID Товара, Название товара, Цена, Количество, Номер клиента.
+
+Внизу можно нажать кнопку создание товара.
+
+![Таблица Товары](https://user-images.githubusercontent.com/86247389/189734631-df1ae246-1418-4ce4-896c-7cbdf9a75814.png)
+
+Открывается окно создание товара, нужно ввести входные данные товара.
+
+![Окно создание товара](https://user-images.githubusercontent.com/86247389/189734823-f45f3c99-fbe4-4a4f-ba85-f3cccde99db5.png)
+
+После нажатие на кнопку "Создать" происходят проверку на правильность ввода данных. 
+
+![Создание товара](https://user-images.githubusercontent.com/86247389/189735072-836851a0-daa6-4b4e-831f-afd3f074b9ec.png)
+
+Выдаётся окно о записи данных в базу данных.
+
+![Запись товара в базу данных](https://user-images.githubusercontent.com/86247389/189735237-59222aaf-adf8-4f97-95a6-d35c08066d4c.png)
+
+После нажмём кнопку "Обновить" и запись была внесена в базу данных и отображается в таблице.
+
+![Проверка записи](https://user-images.githubusercontent.com/86247389/189735564-ad263d2a-0d60-40c7-8bd2-218a5d091698.png)
+
+Выберем строку для удаления, она помечается светло-серым цветом.
+
+![Выбор строки для удаления ](https://user-images.githubusercontent.com/86247389/189735724-3050c548-4c91-4b5b-85dc-9309aa96ca91.png)
+
+При выборе строки нажимаем кнопку "Удалить", в MessageBox нажимаем кнопку "ОК". 
+
+![Удаление](https://user-images.githubusercontent.com/86247389/189735865-63fdfbaf-615e-4c26-9674-af6734e45cf4.png)
+
+Запись была удалена это можно увидеть на скриншоте ниже.
+
+![Проверка операции](https://user-images.githubusercontent.com/86247389/189736109-6a0a9f71-29b8-4b43-8edc-493d591eaa98.png)
+
+Для поиска нужно в TextBox поиск, вписать данные, которые хочет найти пользователь.
+
+![Поиск](https://user-images.githubusercontent.com/86247389/189736283-660653ac-bc74-4b47-879d-20e311ff4d5f.png)
+
+![Поиск](https://user-images.githubusercontent.com/86247389/189736305-3cd4064e-221c-41dc-b2da-b9fc9349cb96.png)
+
+![Поиск](https://user-images.githubusercontent.com/86247389/189736337-47656c8a-3684-4b06-8bea-b8fb87765918.png)
+
+![Поиск](https://user-images.githubusercontent.com/86247389/189736358-70d830ad-0ed9-4347-8b7a-338cedcb7a2c.png)
+
+Чтобы увидеть, всю таблицу нужно нажать кнопку "Обновить".
+![Обновить](https://user-images.githubusercontent.com/86247389/189736486-40367b05-a5eb-4fa1-a87b-5c425b45b7b8.png)
+
+Для выхода из приложения нужно нажать кнопку "Выйти из приложения", в MessageBox нажимаем кнопку "ОК". 
+![Выход](https://user-images.githubusercontent.com/86247389/189736532-e516049e-8720-4217-a7d7-ac7fa64e466c.png)
+
+
+
