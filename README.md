@@ -3,7 +3,6 @@ C#, WPF, MSSQL, Entity Framework.
 
 ![Окно входа](https://user-images.githubusercontent.com/86247389/189728536-882e3f6e-c0a1-4cf0-8785-f8430088677e.png)
 
-
 При заходе в приложение пользователь может зарегистрироваться, для этого перейдя в окно регистрации, данные запишутся в базу данных (MSSQL) Shop_Database.
 
 ![Окно регистрации](https://user-images.githubusercontent.com/86247389/189729758-84e81968-7e81-4f49-a7ea-cbb3f1386947.png)
@@ -24,13 +23,13 @@ C#, WPF, MSSQL, Entity Framework.
 
 ![Окно приложения](https://user-images.githubusercontent.com/86247389/189731415-acbaa3bf-9cb0-4597-b53e-4cc478bb570d.png) 
 
-При нажатие на список, нам на выбор предоставляется две таблицы (Товары, Клиенты)
+При нажатие на список, нам на выбор предоставляется две таблицы (Товары, Клиенты).
 Таблица "Клиенты" имеет первичный ключ ClientId;
 Таблица "Товары" имеет первичный ключ ProductID и вторичный ключ ClientId;
 Связь один ко многим.
 
-Клиенты (ClientId INT (PK), ClientFirstName NCHAR(50), ClientLastName NCHAR(50), ClientLogin NCHAR(50), ClientPassword NCHAR(50))
-Товары (ProductID INT (PK), ProductName NCHAR(50), Price INT, Amount INT, ClientId INT (FK))
+Клиенты (ClientId INT (PK), ClientFirstName NCHAR(50), ClientLastName NCHAR(50), ClientLogin NCHAR(50), ClientPassword NCHAR(50)),
+Товары (ProductID INT (PK), ProductName NCHAR(50), Price INT, Amount INT, ClientId INT (FK).
 
 В случае, если пользователь не выбрал таблицы выдаётся ошибка в MessageBox.
 
@@ -48,39 +47,39 @@ C#, WPF, MSSQL, Entity Framework.
 
 Внизу можно нажать кнопку создание товара.
 
-![Таблица Товары](https://user-images.githubusercontent.com/86247389/189734631-df1ae246-1418-4ce4-896c-7cbdf9a75814.png)
+![Таблица Товары](https://user-images.githubusercontent.com/86247389/189858897-2ad324fe-59cc-4ceb-a749-580a3db1cf6e.png)
 
 Открывается окно создание товара, нужно ввести входные данные товара.
 
-![Окно создание товара](https://user-images.githubusercontent.com/86247389/189734823-f45f3c99-fbe4-4a4f-ba85-f3cccde99db5.png)
+![Окно создание товара](https://user-images.githubusercontent.com/86247389/189859197-90c2387c-06df-46bc-995f-8013f82fdadc.png)
 
 После нажатие на кнопку "Создать" происходят проверку на правильность ввода данных. 
 
-![Создание товара](https://user-images.githubusercontent.com/86247389/189735072-836851a0-daa6-4b4e-831f-afd3f074b9ec.png)
+![Создание товара](https://user-images.githubusercontent.com/86247389/189859350-1fcb9d76-3791-4677-95a9-cd2869a6f0a3.png)
 
 Выдаётся окно о записи данных в базу данных.
 
-![Запись товара в базу данных](https://user-images.githubusercontent.com/86247389/189735237-59222aaf-adf8-4f97-95a6-d35c08066d4c.png)
+![Запись товара в базу данных](https://user-images.githubusercontent.com/86247389/189859565-183f61d6-2a9b-4737-9a70-8c8e3fc04b12.png)
 
 После нажмём кнопку "Обновить" и запись была внесена в базу данных и отображается в таблице.
 
-![Проверка записи](https://user-images.githubusercontent.com/86247389/189735564-ad263d2a-0d60-40c7-8bd2-218a5d091698.png)
+![Проверка записи](https://user-images.githubusercontent.com/86247389/189859657-26109bef-d8d0-4594-9134-c1716938c482.png)
 
 Выберем строку для удаления, она помечается светло-серым цветом.
 
-![Выбор строки для удаления ](https://user-images.githubusercontent.com/86247389/189735724-3050c548-4c91-4b5b-85dc-9309aa96ca91.png)
+![Выбор строки для удаления](https://user-images.githubusercontent.com/86247389/189859779-5878f1e5-1e62-411d-93fa-f4097dfc3ae2.png)
 
 При выборе строки нажимаем кнопку "Удалить", в MessageBox нажимаем кнопку "ОК". 
 
-![Удаление](https://user-images.githubusercontent.com/86247389/189735865-63fdfbaf-615e-4c26-9674-af6734e45cf4.png)
+![Удаление](https://user-images.githubusercontent.com/86247389/189859842-fc048024-d193-4d81-9518-aafbad25f5fa.png)
 
 Запись была удалена это можно увидеть на скриншоте ниже.
 
-![Проверка операции](https://user-images.githubusercontent.com/86247389/189736109-6a0a9f71-29b8-4b43-8edc-493d591eaa98.png)
+![Проверка операции](https://user-images.githubusercontent.com/86247389/189859886-25b22c00-5fe6-4d4a-8655-f936b1da4c11.png)
 
 Для поиска нужно в TextBox поиск, вписать данные, которые хочет найти пользователь.
 
-![Поиск](https://user-images.githubusercontent.com/86247389/189736283-660653ac-bc74-4b47-879d-20e311ff4d5f.png)
+![Поиск](https://user-images.githubusercontent.com/86247389/189859953-5458447f-0c0a-4a82-9ad3-4d1c8103a991.png)
 
 ![Поиск](https://user-images.githubusercontent.com/86247389/189736305-3cd4064e-221c-41dc-b2da-b9fc9349cb96.png)
 
