@@ -49,7 +49,7 @@
                     <DataGridTextColumn Header="ID Товара" FontSize="16" Binding="{Binding ProductID}" />
                     <DataGridTextColumn Header="Название товара" FontSize="16" Binding="{Binding ProductName}"/>
                     <DataGridTextColumn Header="Цена" FontSize="16" Binding="{Binding Price}" />
-                    <DataGridTextColumn Header="Количетсво" FontSize="16" Binding="{Binding Amount}" />
+                    <DataGridTextColumn Header="Количество" FontSize="16" Binding="{Binding Amount}" />
                     <DataGridTextColumn Header="Номер клиента" FontSize="16" Binding="{Binding ClientId}" />
                 </DataGrid.Columns>
             </DataGrid>
